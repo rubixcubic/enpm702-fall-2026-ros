@@ -53,6 +53,12 @@ ament_target_dependencies(distance_controller_exe
 install(TARGETS heading_controller_exe distance_controller_exe
   DESTINATION lib/${PROJECT_NAME})
 
+# Copies the launch and config folders to
+# install/l12_rosbot/share/l12_rosbot, where ros2 launch looks for
+# launch files and FindPackageShare finds the YAML files.
+install(DIRECTORY launch config
+  DESTINATION share/${PROJECT_NAME})
+
 # Finishes the package (exports it so other packages can find it).
 # It must be the last line.
 ament_package()
