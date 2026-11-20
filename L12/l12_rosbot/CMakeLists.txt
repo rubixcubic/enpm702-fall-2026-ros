@@ -32,6 +32,8 @@ find_package(rclcpp REQUIRED)
 # geometry_msgs: the message types TwistStamped and Quaternion
 find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED) # the message type Odometry
+# rcl_interfaces: the message type SetParametersResult
+find_package(rcl_interfaces REQUIRED)
 
 # Lets #include "l12_rosbot/..." find the headers in include/.
 include_directories(include)
@@ -40,7 +42,7 @@ include_directories(include)
 add_executable(heading_controller_exe
   src/heading_controller_main.cpp src/heading_controller_node.cpp)
 ament_target_dependencies(heading_controller_exe
-  rclcpp geometry_msgs nav_msgs)
+  rclcpp geometry_msgs nav_msgs rcl_interfaces)
 
 # Drives the ROSbot straight ahead for a distance.
 add_executable(distance_controller_exe
