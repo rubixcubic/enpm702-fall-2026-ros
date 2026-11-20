@@ -50,9 +50,15 @@ add_executable(distance_controller_exe
 ament_target_dependencies(distance_controller_exe
   rclcpp geometry_msgs nav_msgs)
 
+# Logs now() from a timer of the node's clock and a wall timer.
+add_executable(sim_time_exe
+  src/sim_time_main.cpp src/sim_time_node.cpp)
+ament_target_dependencies(sim_time_exe rclcpp)
+
 # Copies the executables to install/l12_rosbot/lib/l12_rosbot, where
 # ros2 run and ros2 launch look for them.
-install(TARGETS heading_controller_exe distance_controller_exe
+install(TARGETS
+  heading_controller_exe distance_controller_exe sim_time_exe
   DESTINATION lib/${PROJECT_NAME})
 
 # Copies the launch and config folders to
