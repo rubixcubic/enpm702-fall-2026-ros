@@ -27,7 +27,7 @@ class DistanceControllerNode : public rclcpp::Node {
           command_publisher_{
               create_publisher<geometry_msgs::msg::TwistStamped>(
                   "cmd_vel", 10)},
-          control_timer_{create_wall_timer(
+          control_timer_{create_timer(
               std::chrono::milliseconds{50},
               std::bind(&DistanceControllerNode::control_callback,
                         this))} {
