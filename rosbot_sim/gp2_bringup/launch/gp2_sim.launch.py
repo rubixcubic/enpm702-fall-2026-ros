@@ -37,6 +37,9 @@ def launch_setup(context):
         launch_arguments={
             "gz_world": world,
             "gz_headless_mode": "False" if gui else "True",
+            # The Gazebo window: Husarion's layout (husarion_gz_worlds/config/teleop.config) with a camera pose that
+            # shows the whole patrol world.
+            "gz_gui": os.path.join(get_package_share_directory("gp2_bringup"), "config", "gp2_gui.config"),
             "robot_model": "rosbot",
             "rviz": "True" if LaunchConfiguration("rviz").perform(context).lower() == "true" else "False",
             "x": LaunchConfiguration("x").perform(context),

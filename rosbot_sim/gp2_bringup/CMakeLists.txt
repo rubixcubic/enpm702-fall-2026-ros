@@ -3,7 +3,7 @@ project(gp2_bringup)
 
 find_package(ament_cmake REQUIRED)
 
-install(DIRECTORY launch worlds models
+install(DIRECTORY launch worlds models config
   DESTINATION share/${PROJECT_NAME})
 
 ament_package()
